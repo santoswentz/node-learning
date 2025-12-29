@@ -29,6 +29,7 @@ describe("UserController", () => {
 
         console.log(Response);
         expect(mockResponse.state.status).toBe(201);
+        expect(mockResponse.state.json).toMatchObject({"message": "User created successfully!"});
     })
 })
  
