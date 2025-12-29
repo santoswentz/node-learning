@@ -1,4 +1,4 @@
-import express from 'express';
+import  express from 'express';
 import type { Request, Response } from 'express';
 import { UserController } from './controllers/UserController.js';
 import { router } from './routes.js';

@@ -1,4 +1,4 @@
-    interface User {
+    export interface User {
         id: number;
         name: string;
         email: string;
@@ -19,7 +19,7 @@ export class UserService {
     constructor(
         dataBase = db
     ) {
-        this.db = db
+        this.db = dataBase;
     }
 
     createUser = (name: string, email: string) => {
@@ -29,10 +29,10 @@ export class UserService {
                 email
             }
             this.db.push(user);
-            console.log(this.db);
+            console.log("Db updated", this.db);
     }
 
     getAllUsers = () => {
-        return db;
+        return this.db;
     }
 }
