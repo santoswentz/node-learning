@@ -8,8 +8,6 @@ const userController = new UserController();
 router.post('/create-user', userController.createUser);
 router.get('/get-users', userController.getAllUsers);
 
-router.delete('/delete-user', (req, res) => {
-    return res.send('Delete User');
-});
+router.delete('/delete-user', userController.deleteUser);
 
 export { router };

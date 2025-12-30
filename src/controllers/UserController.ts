@@ -34,4 +34,13 @@ export class UserController {
             const users = this.userService.getAllUsers();
             return res.status(200).json(users);
         }
+
+        deleteUser(req: Request, res: Response) {
+            const { id } = req.query;
+            if(!id){
+                return res.status(400).json({message: 'User id is required!'});
+            }
+            // implementar a lógica de deletar o usuário
+            return res.status(200).json({message: `User with id ${id} deleted successfully!`});
+        }
 }
