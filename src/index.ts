@@ -3,14 +3,7 @@ import type { Request, Response } from 'express';
 import { UserController } from './controllers/UserController.js';
 import { router } from './routes.js';
 import 'reflect-metadata' 
-import { AppDataSource } from './database/index.js';
 
-try {
-    await AppDataSource.initialize()
-    console.log("Data Source has been initialized!")
-} catch (error) {
-    console.error("Error during Data Source initialization", error)
-}
 
 const server = express();
 const userController = new UserController();
