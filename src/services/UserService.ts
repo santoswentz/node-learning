@@ -1,38 +1,32 @@
-    export interface User {
-        id: number;
-        name: string;
-        email: string;
-    }
-
-    const db = [
-        {
-            id: 1,
-            name: 'John Doe',
-            email: 'john.doe@example.com'
-        }
-    ];
+import { User } from "../database/entities/User.js";
+import { AppDataSource } from "../database/index.js";
+import { UserRepository } from "../database/repositories/UserRepository.js";
 
 export class UserService {
 
-    db: User[];
+    private userRepository: UserRepository;
 
     constructor(
-        dataBase = db
+        userRepository: UserRepository = new UserRepository(AppDataSource.manager)
     ) {
-        this.db = dataBase;
+        this.userRepository = userRepository;
     }
 
-    createUser = (name: string, email: string) => {
-            const user:User = {
-                id: db.length + 1,
-                name,
-                email
-            }
-            this.db.push(user);
-            console.log("Db updated", this.db);
+    createUser = async(name: string, email: string, password: string): Promise<User> => { 
+        const user = new User(1, name, email, password);
+        return this.userRepository.createUser(user);
     }
 
-    getAllUsers = () => {
-        return this.db;
+    getUser = () => { 
+
     }
+
+    getAuthenticatedUser = async(email: string, password: string): Promise<User | null> => { 
+        return this.userRepository.getUserbyEmailAndPassword(email, password);
+    }
+
+    getToken = () => {
+        
+    }
+
 }

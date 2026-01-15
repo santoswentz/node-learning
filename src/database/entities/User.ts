@@ -8,7 +8,7 @@ export class User {
     id_user: string;
 
     @Column()
-    nome: string;
+    name: string;
 
     @Column()
     email: string;
@@ -16,9 +16,9 @@ export class User {
     @Column()
     password: string;
 
-    constructor(id_user: number, nome: string, email: string, password: string) {
+    constructor(id_user: number, name: string, email: string, password: string) {
         this.id_user = randomUUID();
-        this.nome = nome;
+        this.name = name;
         this.email = email;
         this.password = password;
     }

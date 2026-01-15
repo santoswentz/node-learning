@@ -9,7 +9,7 @@ describe('User repository', () => {
     
     const mockUser: User = {
         id_user: '12345',
-        nome: 'John Doe',
+        name: 'John Doe',
         email: 'john.doe@example.com',
         password: 'securepassword'
     }
